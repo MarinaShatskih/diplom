@@ -16,4 +16,5 @@
   * Исправить баги в валидации: выявлены ошибки при вводе некорректных данных (пустые поля, спецсимволы), которые пропускаются системой.
   * Добавить ID элементам: для повышения стабильности автотестов рекомендуется добавить атрибуты data-test-id в HTML-разметку.
 
-![новый отчет.jpg](../../../OneDrive/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/%D0%9D%D0%95%D0%A2%D0%9E%D0%9B%D0%9E%D0%93%D0%98%D0%AF/%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BE%D1%82%D1%87%D0%B5%D1%82.jpg)![FireShot Capture 021 - Allure Report - [192.168.0.19].png](../../../OneDrive/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/%D0%9D%D0%95%D0%A2%D0%9E%D0%9B%D0%9E%D0%93%D0%98%D0%AF/FireShot%20Capture%20021%20-%20Allure%20Report%20-%20%5B192.168.0.19%5D.png)![FireShot Capture 021 - Allure Report - [192.168.0.19].png](../../../OneDrive/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D0%BE%D0%BB/%D0%9D%D0%95%D0%A2%D0%9E%D0%9B%D0%9E%D0%93%D0%98%D0%AF/FireShot%20Capture%20021%20-%20Allure%20Report%20-%20%5B192.168.0.19%5D.png)
+<img width="927" height="1998" alt="FireShot Capture 021 - Allure Report -  192 168 0 19" src="https://github.com/user-attachments/assets/f03707e2-2874-41af-a473-a70a93e0d64b" />
+<img width="1725" height="750" alt="новый отчет" src="https://github.com/user-attachments/assets/ca9034b2-838a-44a6-9771-7000523e9738" />
