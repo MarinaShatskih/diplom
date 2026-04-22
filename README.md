@@ -2,18 +2,16 @@
 * Запустить **Docker Desktop**.
 
 * Открыть клонированный проект в **IntelliJ IDEA**.
+  Перед запуском тестов необходимо поднять контейнеры с базами данных (MySQL, PostgreSQL) и эмулятором банковских сервисов:
+  Выполните команду: docker-compose up -d
+  Приложение поддерживает две СУБД. Перед запуском тестов необходимо запустить .jar файл, указав URL нужной базы.
+* Для работы с MySQL: java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar
+  Для работы с PostgreSQL: java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar
+  Запуск тестов под MySQL: ./gradlew test "-Ddb.url=jdbc:mysql://localhost:3306/app" "-Ddb.user=app" "-Ddb.password=pass"
+  Запуск тестов под PostgreSQL: ./gradlew test "-Ddb.url=jdbc:postgresql://localhost:5432/app" "-Ddb.user=app" "-Ddb.password=pass"
 
-*  **Для запуска приложения поочередно ввести команды в терминале IntelliJ IDEA**
-
-    * `docker pull mysql` Для загрузки образа контейнера **MySQL** в локальную систему **Docker**. Этот образ представляет собой предварительно собранный контейнер, который содержит все необходимое программное обеспечение для работы сервера баз данных **MySQL**.
-
-    * `docker-compose up` Для запуска композитного контейнера, определенного в файле docker-compose.yml. Эта команда запускает все службы, определенные в файле конфигурации, в отдельных контейнерах и связывает их вместе. 
-
-    * `java -jar artifacts/aqa-shop.jar -port=8080` Для запуска Java-приложения с названием aqa-shop.jar.
 
 
-**Для запуска тестов поочередно ввести команды в терминале IntelliJ IDEA**
+* Генерация отчетов
 
-    * `./gradlew clean test` Очищает предыдущие прогоны тестов и запускает их по новой.
-
-    * `./gradlew allureServe` Для генерация отчёта Allure Report  по результатам тестирования и автоматическое открытие отчета в браузере по умолчанию.  
+    * ./gradlew allureServe Для генерация отчёта Allure Report по результатам тестирования и автоматическое открытие отчета в браузере по умолчанию.  

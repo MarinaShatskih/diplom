@@ -41,8 +41,6 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.33'
     implementation 'org.postgresql:postgresql:42.7.2'
     implementation 'commons-dbutils:commons-dbutils:1.7'
-    implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'io.rest-assured:rest-assured:5.3.2'
 }
 
 test {

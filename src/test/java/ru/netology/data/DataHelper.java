@@ -24,7 +24,7 @@ public class DataHelper {
         String codCvcCvv;
     }
 
-    // Базовые валидные данные
+    // --- БАЗОВЫЕ ВАЛИДНЫЕ ДАННЫЕ ---
     public static String getApprovedCardNumber() { return approvedCard; }
     public static String getDeclinedCardNumber() { return declinedCard; }
     public static String getValidMonth() { return LocalDate.now().format(DateTimeFormatter.ofPattern("MM")); }
@@ -32,7 +32,20 @@ public class DataHelper {
     public static String getValidHolder() { return fakerEn.name().firstName().toUpperCase() + " " + fakerEn.name().lastName().toUpperCase(); }
     public static String getValidCVC() { return "123"; }
 
-    // --- Методы для тестов НОМЕРА КАРТЫ ---
+    // --- ПОЗИТИВНЫЕ СЦЕНАРИИ ---
+    public static CardInfo getApprovedCard() {
+        return new CardInfo(approvedCard, getValidMonth(), getValidYear(), getValidHolder(), getValidCVC());
+    }
+
+    public static CardInfo getDeclinedCard() {
+        return new CardInfo(declinedCard, getValidMonth(), getValidYear(), getValidHolder(), getValidCVC());
+    }
+
+    public static CardInfo getUnknownCard() {
+        return new CardInfo("4444 4444 4444 4443", getValidMonth(), getValidYear(), getValidHolder(), getValidCVC());
+    }
+
+    // --- ТЕСТЫ НОМЕРА КАРТЫ ---
     public static CardInfo getCardNumberZero() {
         return new CardInfo("0000 0000 0000 0000", getValidMonth(), getValidYear(), getValidHolder(), getValidCVC());
     }
@@ -52,7 +65,7 @@ public class DataHelper {
         return new CardInfo("", getValidMonth(), getValidYear(), getValidHolder(), getValidCVC());
     }
 
-    // --- Методы для тестов МЕСЯЦА ---
+    // --- ТЕСТЫ МЕСЯЦА ---
     public static CardInfo getMonth13() {
         return new CardInfo(approvedCard, "13", getValidYear(), getValidHolder(), getValidCVC());
     }
@@ -74,13 +87,18 @@ public class DataHelper {
     public static CardInfo getMonthEmpty() {
         return new CardInfo(approvedCard, "", getValidYear(), getValidHolder(), getValidCVC());
     }
+    public static CardInfo getExpiredMonth() {
+        var date = LocalDate.now().minusMonths(1);
+        return new CardInfo(approvedCard, date.format(DateTimeFormatter.ofPattern("MM")),
+                LocalDate.now().format(DateTimeFormatter.ofPattern("yy")), getValidHolder(), getValidCVC());
+    }
 
-    // --- Методы для тестов ГОДА ---
+    // --- ТЕСТЫ ГОДА ---
     public static CardInfo getYearLessThanCurrent() {
         return new CardInfo(approvedCard, getValidMonth(), LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("yy")), getValidHolder(), getValidCVC());
     }
-    public static CardInfo getYearMoreThanTheCurrentOne() {
-        return new CardInfo(approvedCard, getValidMonth(), LocalDate.now().plusYears(10).format(DateTimeFormatter.ofPattern("yy")), getValidHolder(), getValidCVC());
+    public static CardInfo getYearMoreThanFiveYears() {
+        return new CardInfo(approvedCard, getValidMonth(), LocalDate.now().plusYears(6).format(DateTimeFormatter.ofPattern("yy")), getValidHolder(), getValidCVC());
     }
     public static CardInfo getYearSymbol() {
         return new CardInfo(approvedCard, getValidMonth(), "!@", getValidHolder(), getValidCVC());
@@ -95,7 +113,7 @@ public class DataHelper {
         return new CardInfo(approvedCard, getValidMonth(), "", getValidHolder(), getValidCVC());
     }
 
-    // --- Методы для тестов ВЛАДЕЛЬЦА ---
+    // --- ТЕСТЫ ВЛАДЕЛЬЦА ---
     public static CardInfo getHolderCyrillic() {
         return new CardInfo(approvedCard, getValidMonth(), getValidYear(), "ИВАН ИВАНОВ", getValidCVC());
     }
@@ -115,7 +133,7 @@ public class DataHelper {
         return new CardInfo(approvedCard, getValidMonth(), getValidYear(), "", getValidCVC());
     }
 
-    // --- Методы для тестов CVC ---
+    // --- ТЕСТЫ CVC ---
     public static CardInfo getCVCSymbol() {
         return new CardInfo(approvedCard, getValidMonth(), getValidYear(), getValidHolder(), "!@");
     }
@@ -127,9 +145,6 @@ public class DataHelper {
     }
     public static CardInfo getCVCtwoDigit() {
         return new CardInfo(approvedCard, getValidMonth(), getValidYear(), getValidHolder(), "12");
-    }
-    public static CardInfo getCVC000() {
-        return new CardInfo(approvedCard, getValidMonth(), getValidYear(), getValidHolder(), "000");
     }
     public static CardInfo getCVCempty() {
         return new CardInfo(approvedCard, getValidMonth(), getValidYear(), getValidHolder(), "");
